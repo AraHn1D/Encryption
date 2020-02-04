@@ -26,4 +26,3 @@ matrix:
 
 install:
   - composer install
-  - composer require arahnid/encryption
