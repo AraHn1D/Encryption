@@ -18,12 +18,13 @@
   "authors" : [
     {
       "name" : "Yury Martyshchenko",
-      "email" : "yury.martyshchenko@gmail.com"
+      "email" : "yury.martyshchenko@gmail.com",
+      "role" : "Developer"
     }
   ],
-  "autoload": {
-    "psr-4": {
-      "encryption\\": "lib"
+  "autoload" : {
+    "psr-4" : {
+      "encryption\\" : "lib"
     }
   },
   "minimum-stability" : "dev",
