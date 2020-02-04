@@ -1,14 +1,33 @@
 {
-  "name": "arahnid/encryption",
-  "description": "Powerful tool to encrypt data or use it as End-to-End technology",
-  "type": "library",
-  "license": "MIT",
-  "authors": [
+  "name" : "arahnid/encryption",
+  "description" : "Powerful tool to encrypt data or use it as End-to-End technology",
+  "type" : "library",
+  "license" : "MIT",
+  "keywords" : [
+    "security",
+    "encryption",
+    "AES",
+    "openssl",
+    "cipher",
+    "cryptography",
+    "symmetric key cryptography",
+    "crypto",
+    "encrypt",
+    "authenticated encryption"
+  ],
+  "authors" : [
     {
-      "name": "Yury Martyshchenko",
-      "email": "yury.martyshchenko@gmail.com"
+      "name" : "Yury Martyshchenko",
+      "email" : "yury.martyshchenko@gmail.com"
     }
   ],
-  "minimum-stability": "stable",
-  "require": {}
+  "autoload": {
+    "psr-4": {
+      "Encryption\\": "lib"
+    }
+  },
+  "minimum-stability" : "dev",
+  "require" : {
+    "php" : ">=5.6.40"
+  }
 }
