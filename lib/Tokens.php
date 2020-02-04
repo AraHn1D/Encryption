@@ -10,7 +10,7 @@
 
 		/**
 		 * @var $props_allowed_amount int
-		 * Here 3 - because this method returns 3 properties (encrypted data, key and vector)
+		 * Here 6 - because this method returns 3 properties (encrypted data, key and vector)
 		 * It allows to developer determine how these properties will be represented at output
 		 * false - at binary representation, true - hexadecimal
 		 */
