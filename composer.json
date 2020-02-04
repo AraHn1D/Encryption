@@ -1,0 +1,14 @@
+{
+  "name": "arahnid/encryption",
+  "description": "Powerful tool to encrypt data or use it as End-to-End technology",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Yury Martyshchenko",
+      "email": "yury.martyshchenko@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {}
+}
