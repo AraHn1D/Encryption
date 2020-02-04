@@ -13,7 +13,8 @@
     "symmetric key cryptography",
     "crypto",
     "encrypt",
-    "authenticated encryption"
+    "authenticated encryption",
+    "end-to-end encryption"
   ],
   "authors" : [
     {

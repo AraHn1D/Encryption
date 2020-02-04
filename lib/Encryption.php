@@ -23,7 +23,7 @@
 		/**
 		 * Static properties
 		 */
-		public static $version     = '1.3.0.3';
+		public static $version     = '1.3.0.4';
 		public static $className   = null;
 		public static $lcClassName = null;
 
