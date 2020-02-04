@@ -1,9 +1,9 @@
 ### Encryption
-# ignore loader.php file
-loader.php
+# ignore travis file
+.travis.yml
 
 #ignore encryption.static file because if will generated automatically on each server
-encryption.static
+lib/encryption.static
 
 # ignore log files and databases
 *.log
@@ -11,4 +11,4 @@ encryption.static
 *.sqlite
 
 # don't ignore the .htaccess
-!.htaccess
+!lib/.htaccess
