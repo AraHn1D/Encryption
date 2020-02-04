@@ -9,9 +9,18 @@ php:
   - nightly
   - hhvm
 
+# optionally set up exclusions and allowed failures in the matrix
+matrix:
+  exclude:
+    - php: hhvm
+  allow_failures:
+    - php: 7.0
+    - php: nightly
+    - php: hhvm
+
 before_script:
   - travis_retry composer self-update
-  - travis_retry composer install --no-interaction --prefer-source --dev
+  - travis_retry composer install --no-interaction --prefer-source
 
 script:
   - vendor/bin/phpunit --coverage-clover=coverage.xml
