@@ -13,6 +13,7 @@ php:
 matrix:
   exclude:
     - php: hhvm
+    - php: nightly
   allow_failures:
     - php: 7.0
     - php: nightly
