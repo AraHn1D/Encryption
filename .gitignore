@@ -1,0 +1,11 @@
+### Encryption
+# ignore loader.php file
+loader.php
+
+#ignore encryption.static file because if will generated automatically on each server
+encryption.static
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
