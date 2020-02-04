@@ -23,7 +23,7 @@
 	 *
 	 * @package  Encryption
 	 * @author   Yury Marty
-	 * @link     in progress
+	 * @link     https://github.com/AraHn1D/Encryption
 	 */
 	class Encryption implements EncryptionAPI {
 		/**
