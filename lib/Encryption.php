@@ -6,21 +6,6 @@
 	 * Encryption class
 	 * This class is going to destroy developers myths that "client" can't exchanging information secure with "server"
 	 *
-	 * Changelog:
-	 * @version  1.3.0.1 was added closure parsing to encrypt() method
-	 * @version  1.3     was added full support end-to-end encryption technology
-	 * @version  1.2.1   was added static property $instance with self instance
-	 * @since    1.2.1   static className() and lcClassName() was removed
-	 * @version  1.2     were added Encryption Modes: Client Only, Server Only, Client-Server and functionality changes
-	 *           also were added methods setClientKey, setClientVector, getClientState, setClientState
-	 *           method encryptOnce has been deprecated instead of this has been added a bool option 'once' to encrypt method
-	 *
-	 * @version  1.1.6   was added getClientKey() and getClientVector() public methods and some minor changes
-	 * @version  1.1.5.4 was added static variable @var $version
-	 * @version  1.1.5.3 were added encryptOnce, setLength() and initSession() methods
-	 * @version  1.1.5   were added static className() and lcClassName() methods
-	 * @version  1.1     full rebuild of the class
-	 *
 	 * @package  Encryption
 	 * @author   Yury Marty
 	 * @link     https://github.com/AraHn1D/Encryption
@@ -38,7 +23,7 @@
 		/**
 		 * Static properties
 		 */
-		public static $version     = '1.3.0.1';
+		public static $version     = '1.3.0.3';
 		public static $className   = null;
 		public static $lcClassName = null;
 
