@@ -9,3 +9,6 @@ encryption.static
 *.log
 *.sql
 *.sqlite
+
+# don't ignore the .htaccess
+!.htaccess
