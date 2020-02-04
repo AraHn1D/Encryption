@@ -4,10 +4,12 @@
 	class CoreTest extends PHPUnit_Framework_TestCase {
 		public function testCore() {
 			try {
-				\encryption\Encryption::_();
+				if ( \encryption\Encryption::_() instanceof \encryption\Encryption ) {
+					return true;
+				}
 			}
 			catch ( \encryption\EncryptionError $error ) {
-				return 2;
+				return false;
 			}
 		}
 	}
