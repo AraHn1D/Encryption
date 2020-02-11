@@ -10,14 +10,17 @@
 	class CoreTest extends TestCase {
 		public function testCore() {
 			try {
-				$instance = Encryption::_([
-					'mode' => Encryption::SERVER_MODE
-				]);
+				Encryption::_( [
+					'mode' => Encryption::SERVER_MODE,
+				] );
+
+				$encrypted = Encryption::_()->encrypt( 'Test' );
+				$decrypted = Encryption::_()->decrypt( $encrypted );
 			}
-			catch (EncryptionError $error) {
+			catch ( EncryptionError $error ) {
 				return false;
 			}
 
-			return $instance instanceof \encryption\Encryption;
+			return $decrypted instanceof Decrypted && $decrypted->getData() === 'Test';
 		}
 	}
