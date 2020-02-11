@@ -14,7 +14,9 @@
 					'mode' => Encryption::SERVER_MODE,
 				] );
 
-				$encrypted = Encryption::_()->encrypt( 'Test' );
+				$encrypted = Encryption::_()->encrypt( 'Test', [
+					'mode' => Encryption::SERVER_MODE,
+				] );
 				$decrypted = Encryption::_()->decrypt( $encrypted );
 			}
 			catch ( EncryptionError $error ) {
