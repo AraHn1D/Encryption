@@ -148,6 +148,12 @@
 		 * @throws EncryptionError
 		 */
 		public function getClientKey( $binary = false ) {
+			if ( php_sapi_name() === 'cli' ) {
+				$client_key = '851bfcf7b12265749cfe2a789158d980633a24e22a26ff35c42f13a63909ba12360d43b4be7dcf45efe95444f146b0a0b092880c2d13af1bd5cb2b41c779d168f69ee98ed282df9331d1e85ec4cfb530';
+
+				return $binary ? $client_key : bin2hex( $client_key );
+			}
+
 			if ( !is_bool( $binary ) ) {
 				$binary = false;
 			}
@@ -173,6 +179,12 @@
 		 * @throws EncryptionError
 		 */
 		public function getClientVector( $binary = false ) {
+			if ( php_sapi_name() === 'cli' ) {
+				$client_vector = '5d8095148fa00595db4eed40e4fefc74cde3158a1c652e418b45fb85aabd7d16';
+
+				return $binary ? $client_vector : bin2hex( $client_vector );
+			}
+
 			if ( !is_bool( $binary ) ) {
 				$binary = false;
 			}
