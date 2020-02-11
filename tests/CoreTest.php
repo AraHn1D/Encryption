@@ -5,6 +5,6 @@
 
 	class CoreTest extends TestCase {
 		public function testCore() {
-			return true;
+			return \encryption\Encryption::_() instanceof \encryption\Encryption;
 		}
 	}
