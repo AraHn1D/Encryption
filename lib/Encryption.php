@@ -949,7 +949,7 @@
 		 * @throws EncryptionError
 		 */
 		private function initSession() {
-			if ( php_sapi_name() !== 'cli' ) {
+			if ( php_sapi_name() === 'cli' ) {
 				return true;
 			}
 
