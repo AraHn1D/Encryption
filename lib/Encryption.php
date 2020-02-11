@@ -46,7 +46,6 @@
 		 */
 		const INTERNAL_ERROR           = 'Internal error!';
 		const FAILED_TO_CONSTUCT_CLASS = 'Failed to construct and init class!';
-		const INCOMPATIBLE_MODES       = 'Incompatible encryption modes!';
 		const PUBLIC_TOKENS_WERENT_SET = 'Public tokens weren\'t set';
 		const CLIENT_TOKENS_WERENT_SET = 'Client\'s tokens weren\'t set';
 		const SERVER_TOKENS_WERENT_SET = 'Server\'s tokens weren\'t set';
@@ -140,52 +139,6 @@
 		}
 
 		/**
-		 * Method returns randomly generated key in binary or hexadecimal representations
-		 * It needs to decrypt data
-		 *
-		 * @param bool $binary
-		 *
-		 * @return bool|string
-		 * @throws EncryptionError
-		 */
-		public function getKey( $binary = false ) {
-			if ( !is_bool( $binary ) ) {
-				$binary = false;
-			}
-
-			$binary = !!$binary;
-
-			if ( !$this->key || $this->key === false ) {
-				throw new EncryptionError( self::KEY_WASNT_SET );
-			}
-
-			return $binary ? $this->key : bin2hex( $this->key );
-		}
-
-		/**
-		 * Method returns randomly generated vector in binary or hexadecimal representations
-		 * It needs to decrypt data
-		 *
-		 * @param bool $binary
-		 *
-		 * @return bool|string
-		 * @throws EncryptionError
-		 */
-		public function getVector( $binary = false ) {
-			if ( !is_bool( $binary ) ) {
-				$binary = false;
-			}
-
-			$binary = !!$binary;
-
-			if ( !$this->vector || $this->vector === false ) {
-				throw new EncryptionError( self::VECTOR_WASNT_SET );
-			}
-
-			return $binary ? $this->vector : bin2hex( $this->vector );
-		}
-
-		/**
 		 * Method returns randomly generated client's key in binary or hexadecimal representations
 		 * It needs to decrypt data
 		 *
@@ -236,15 +189,6 @@
 		}
 
 		/**
-		 * Method returns current encryption mode
-		 *
-		 * @return null|int
-		 */
-		public function getMode() {
-			return $this->mode;
-		}
-
-		/**
 		 * If property $options[ 'once' ] has been passed
 		 * Method encrypts data using newly generated key and vector
 		 * It allows to developer encrypt same information with various key and vector
@@ -280,6 +224,9 @@
 			$result = Encrypted::_();
 			$tokens = Tokens::_();
 
+			$this->isKeySet();
+			$this->isVectorSet();
+
 			if ( $once ) {
 				// current encrypted public tokens
 				$current_key    = $this->key;
@@ -305,8 +252,8 @@
 			$result->set( 'data', $encrypted );
 
 			$tokens->set( 'public', [
-				'key'    => $this->getKey( true ),
-				'vector' => $this->getVector( true ),
+				'key'    => $this->key,
+				'vector' => $this->vector,
 			] )
 				->set( 'client', [
 					'key'    => $this->getClientKey( true ),
@@ -366,6 +313,36 @@
 			}
 
 			return Decrypted::_()->set( 'data', unserialize( $decrypted ) )->close();
+		}
+
+		/**
+		 * Method returns "true" if key has been set
+		 * Otherwise it throws EncryptionError
+		 *
+		 * @return bool
+		 * @throws EncryptionError
+		 */
+		private function isKeySet() {
+			if ( !$this->key || $this->key === false ) {
+				throw new EncryptionError( self::KEY_WASNT_SET );
+			}
+
+			return true;
+		}
+
+		/**
+		 * Method returns "true" if vector has been set
+		 * Otherwise it throws EncryptionError
+		 *
+		 * @return bool
+		 * @throws EncryptionError
+		 */
+		private function isVectorSet() {
+			if ( !$this->vector || $this->vector === false ) {
+				throw new EncryptionError( self::VECTOR_WASNT_SET );
+			}
+
+			return true;
 		}
 
 		/**
@@ -869,7 +846,7 @@
 
 					default:
 						$is_keys_decrypted = true; // setting flag to prevent infinity loop
-						break; // unnecessary but it can to lie down here for a while
+						break; // unnecessary but it can to lie down there for a while
 				}
 			}
 
