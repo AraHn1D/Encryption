@@ -949,15 +949,17 @@
 		 * @throws EncryptionError
 		 */
 		private function initSession() {
-			if ( session_status() === PHP_SESSION_NONE ) {
-				if ( version_compare( PHP_VERSION, '7.0.0', '>=' ) ) {
-					session_start( [
-						'name' => self::$className . 'SID',
-					] );
-				}
-				else {
-					session_name( self::$className . 'SID' );
-					session_start();
+			if ( php_sapi_name() !== 'cli' ) {
+				if ( session_status() === PHP_SESSION_NONE ) {
+					if ( version_compare( PHP_VERSION, '7.0.0', '>=' ) ) {
+						session_start( [
+							'name' => self::$className . 'SID',
+						] );
+					}
+					else {
+						session_name( self::$className . 'SID' );
+						session_start();
+					}
 				}
 			}
 
