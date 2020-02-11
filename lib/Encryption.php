@@ -961,9 +961,9 @@
 						session_start();
 					}
 				}
-			}
 
-			session_regenerate_id();
+				session_regenerate_id();
+			}
 
 			$client_state = $this->getClientState();
 
