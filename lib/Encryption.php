@@ -707,7 +707,11 @@
 				$tokens = $tokens->get( null, null, true );
 			}
 
-			if ( empty( $tokens ) || ( !is_array( $tokens ) && !$this->isSerialized( $tokens ) && !$tokens instanceof Tokens ) ) {
+			if ( $this->isSerialized( $tokens ) ) {
+				$tokens = unserialize( $tokens );
+			}
+
+			if ( empty( $tokens ) || ( !is_array( $tokens ) && !$tokens instanceof Tokens ) ) {
 				$tokens = [
 					'public' => [
 						'key'    => $this->key,
@@ -721,11 +725,7 @@
 					'server' => $this->getServerTokens( true ),
 				];
 			}
-			else if ( is_array( $tokens ) || $this->isSerialized( $tokens ) ) {
-				if ( $this->isSerialized( $tokens ) ) {
-					$tokens = unserialize( $tokens );
-				}
-
+			else if ( is_array( $tokens ) ) {
 				if ( empty( $tokens[ 'public' ] ) ) {
 					$tokens[ 'public' ] = [
 						'key'    => $this->key,
