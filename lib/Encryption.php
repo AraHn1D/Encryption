@@ -707,7 +707,7 @@
 				$tokens = $tokens->get( null, null, true );
 			}
 
-			if ( empty( $tokens ) || ( !is_array( $tokens ) && !$tokens instanceof Tokens ) ) {
+			if ( empty( $tokens ) || ( !is_array( $tokens ) && !$this->isSerialized( $tokens ) && !$tokens instanceof Tokens ) ) {
 				$tokens = [
 					'public' => [
 						'key'    => $this->key,
