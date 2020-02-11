@@ -5,6 +5,8 @@
 
 	class CoreTest extends TestCase {
 		public function testCore() {
+			var_dump( session_status() );
+
 			return \encryption\Encryption::_() instanceof \encryption\Encryption;
 		}
 	}
