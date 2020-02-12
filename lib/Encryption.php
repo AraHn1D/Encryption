@@ -454,9 +454,9 @@
 				return false;
 			}
 
-			if ( !$binary ) {
-				$server_tokens[ 'key' ]    = bin2hex( $server_tokens[ 'key' ] );
-				$server_tokens[ 'vector' ] = bin2hex( $server_tokens[ 'vector' ] );
+			if ( !!$binary ) {
+				$server_tokens[ 'key' ]    = hex2bin( $server_tokens[ 'key' ] );
+				$server_tokens[ 'vector' ] = hex2bin( $server_tokens[ 'vector' ] );
 			}
 
 			return $server_tokens;
@@ -471,8 +471,8 @@
 			$server_tokens_file = fopen( self::SERVER_TOKENS_FILE_PATH, 'w+' );
 
 			$server_tokens = [
-				'key'    => $this->generateToken( $this->length ),
-				'vector' => $this->generateToken( openssl_cipher_iv_length( $this->method ) ),
+				'key'    => bin2hex( $this->generateToken( $this->length ) ),
+				'vector' => bin2hex( $this->generateToken( openssl_cipher_iv_length( $this->method ) ) ),
 			];
 
 			if ( !$server_tokens[ 'key' ] || !$server_tokens[ 'vector' ] ) {

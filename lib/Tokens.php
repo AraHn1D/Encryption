@@ -81,7 +81,7 @@
 		 * @throws EncryptionError
 		 */
 		public function get( $qualifier = null, $key = null, $binary = false ) {
-			$binary = isset( $binary ) ? ( is_array( $binary ) || is_bool( $binary ) ? $binary : false ) : is_bool( $binary ) ? $binary : false;
+			$binary = isset( $binary ) ? ( is_array( $binary ) || is_bool( $binary ) ? $binary : false ) : ( is_bool( $binary ) ? $binary : false );
 
 			if ( is_array( $binary ) ) {
 				array_splice( $binary, self::$props_allowed_amount );
